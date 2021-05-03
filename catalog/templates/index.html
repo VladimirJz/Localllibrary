@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>Resumen de disponibilidad</title>
+
+{% endblock %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Bienvenido  a <em>LocalLibrary</em>, un sitio web muy basico desarrollado en  Django como tutoria de ejemplo  en the Mozilla Developer Network.</p>
+
+<h2>Contenido  dinamico</h2>
+
+  <p>La libreria cuenta con los siguientes registros:</p>
+  <ul>
+    <li><strong>Libros:</strong> {{ num_books }}</li>
+    <li><strong>Copias:</strong> {{ num_instances }}</li>
+    <li><strong>Copias disponibles:</strong> {{ num_instances_available }}</li>
+    <li><strong>Autores:</strong> {{ num_authors }}</li>
+    <li><strong>Autores Fallecidos:</strong> {{ num_authors_dead }}</li>
+    <li><strong>Generos Distintos:</strong> {{ num_genre }}</li>
+  </ul>
+
+{% endblock %}

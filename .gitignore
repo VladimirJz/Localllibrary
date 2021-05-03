@@ -2,3 +2,4 @@ catalog/__pycache__/__init__.cpython-39.pyc
 catalog/__pycache__/
 locallibrary/__pycache__/
 catalog/migrations/__pycache__/
+catalog/migrations/0003_auto_20210307_0346.py

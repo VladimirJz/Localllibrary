@@ -15,16 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Usar include () para agregar rutas des la aplicación Cartalogo
+# Usar include () para agregar rutas des la aplicación Catalogo
 from django.urls import include
 
 urlpatterns += [
-    path('catalog/', include('catalog.urls')),
+   # path('catalog/', include('catalog.urls')),
+       url(r'^catalog/', include('catalog.urls')),
+
 ]
 
 # Agregar mapeo de URL para redirigir el directorio Raiz a nuestra aplicación (Catalog)

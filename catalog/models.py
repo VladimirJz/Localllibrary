@@ -12,16 +12,22 @@ class Genre (models.Model):
 
 """ Book """
 class Book(models.Model):
-    tittle=models.CharField(max_length=200)
+    title=models.CharField(max_length=200)
     author=models.ForeignKey('Author',on_delete=models.SET_NULL,null=True)
     sumary=models.TextField(max_length=1000, help_text="Ingrese una descripción del libro")
     isbn=models.CharField('ISBN',max_length=13,help_text='13 Caracteres <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a> ')
     genre=models.ManyToManyField(Genre,help_text="Seleccione un genero")
     
     def __str__(self):
-        return self.tittle
+        return self.title
     def _get_absolute_url(self):
         return reverse('book detail',args=[str(self.id)]) #URL de book detail
+    
+    def display_genre(self):
+        # Crea una cadena concatenandos los 1:n valores de genereo para el Book
+        return ','.join([genre.name for genre in self.genre.all()[:3]])
+        display_genre.short_description='Genre'
+
 
 """ Copias de Libros """
 class BookInstance(models.Model):
@@ -40,7 +46,9 @@ class BookInstance(models.Model):
     class Meta:
         ordering=["due_back"]
     def __str__(self):
-        return '%s (%s)' % (self.id,self.book.tittle)
+        return '%s (%s)' % (self.id,self.book.title)
+    
+
 
 """ DAtos del Autor """
 class Author(models.Model):
